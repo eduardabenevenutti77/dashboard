@@ -2,6 +2,8 @@ import { Col, Container, Row } from "react-bootstrap";
 import { useState } from "react";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
+import FormLogin from "../components/FormLogin";
+import FormRegister from "../components/FormRegister";
 
 export default function Login() {
   const [key, setKey] = useState("home");
@@ -11,21 +13,28 @@ export default function Login() {
       className="d-flex align-items-center justify-content-center"
       style={{ minHeight: "100vh" }}
     >
-      <Container className="d-flex align-items-center   shadow-lg p-3 mb-5 bg-white rounded">
+      <Container
+        className=" align-items-center shadow-lg p-3 mb-5 bg-white rounded p-5 "
+        style={{ maxWidth: 400 }}
+      >
         <Row>
           <Col>
-            <h1>Sistema Dashboard</h1>
+            <h4 className="text-center mb-3">Sistema Dashboard</h4>
             <Tabs
               id="tabs-login"
               activeKey={key}
               onSelect={(k) => setKey(k)}
-              className="mb-3"
+              className="mb-3 w-100"
+              justify
+              fluid
             >
               <Tab eventKey="login" title="Login">
-                <h3>Entre com sua conta</h3>
+                <p className="text-center">Entre com sua conta</p>
+                <FormLogin />
               </Tab>
               <Tab eventKey="register" title="Registro">
-                <h3>Vamos fazer seu registro?</h3>
+                <p>Vamos fazer seu registro?</p>
+                <FormRegister />
               </Tab>
             </Tabs>
           </Col>
