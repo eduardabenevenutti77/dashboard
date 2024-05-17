@@ -6,7 +6,7 @@ import FormLogin from "../components/FormLogin";
 import FormRegister from "../components/FormRegister";
 
 export default function Login() {
-  const [key, setKey] = useState("home");
+  const [key, setKey] = useState("login");
   return (
     <Container
       fluid
@@ -24,16 +24,24 @@ export default function Login() {
               id="tabs-login"
               activeKey={key}
               onSelect={(k) => setKey(k)}
-              className="mb-3 w-100"
+              className="w-100"
               justify
               fluid
             >
-              <Tab eventKey="login" title="Login">
+              <Tab
+                eventKey="login"
+                title="Login"
+                className="border border-top-0 p-2"
+              >
                 <p className="text-center">Entre com sua conta</p>
                 <FormLogin />
               </Tab>
-              <Tab eventKey="register" title="Registro">
-                <p>Vamos fazer seu registro?</p>
+              <Tab
+                eventKey="register"
+                title="Registro"
+                className="border border-top-0 p-2"
+              >
+                <p className="text-center">Vamos fazer seu registro?</p>
                 <FormRegister />
               </Tab>
             </Tabs>

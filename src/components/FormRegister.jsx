@@ -1,5 +1,9 @@
+import axios from "axios";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { auth } from "../config/firebase";
+
 
 export default function FormRegister() {
   const [nome, setNome] = useState("");
@@ -7,16 +11,31 @@ export default function FormRegister() {
   const [senha, setSenha] = useState("");
   const [repetirSenha, setRepetirSenha] = useState("");
 
-  async function handleRegister() {
+  async function handleRegisterNode() {
     console.log(nome, email, senha, repetirSenha);
 
     const payload = {
-      nome,
-      email,
+      nome: nome,
+      email: email,
       senha,
     };
-    const resposta =
-        await axios.post("http://localhost:3000/user", payload);
+    const resposta = await axios.post("http://localhost:8000/user", payload);
+  }
+
+  async function handleRegisterFirebase(e) {
+    e.preventDefault();
+
+    try {
+      // tenta isso daqui
+      // vamos tentar criar o usuário no firebase auth
+      const user = await createUserWithEmailAndPassword(auth, email, senha);
+
+      console.log(user);
+    } catch (e) {
+      // se não der certo faz isso aqui oh:
+      console.log(e);
+      console.log("Código do erro", e.code);
+    }
   }
 
   return (
@@ -74,7 +93,11 @@ export default function FormRegister() {
           />
         </Form.Group>
 
-        <Button variant="primary" type="submit">
+        <Button
+          variant="primary"
+          type="submit"
+          onClick={handleRegisterFirebase}
+        >
           Submit
         </Button>
       </Form>
