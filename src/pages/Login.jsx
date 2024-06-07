@@ -19,7 +19,7 @@ export default function Login() {
       >
         <Row>
           <Col>
-            <h4 className="text-center mb-3">Sistema Dashboard</h4>
+            <h4 className="text-center mb-3" style={{ fontFamily: "fantasy"}}>PetCareCentral</h4>
             <Tabs
               id="tabs-login"
               activeKey={key}
@@ -33,7 +33,7 @@ export default function Login() {
                 title="Login"
                 className="border border-top-0 p-2"
               >
-                <p className="text-center">Entre com sua conta</p>
+                <p className="text-center" style={{ fontSize:"15px", paddingTop:"5px"}}>Entre na central do aplicativo</p>
                 <FormLogin />
               </Tab>
               <Tab
@@ -41,7 +41,7 @@ export default function Login() {
                 title="Registro"
                 className="border border-top-0 p-2"
               >
-                <p className="text-center">Vamos fazer seu registro?</p>
+                <p className="text-center" style={{ fontSize:"15px", paddingTop:"5px"}}>Efetue o registro no aplicativo e aproveite as ofertas!</p>
                 <FormRegister />
               </Tab>
             </Tabs>

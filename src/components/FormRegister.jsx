@@ -97,6 +97,7 @@ export default function FormRegister() {
           variant="primary"
           type="submit"
           onClick={handleRegisterFirebase}
+          style={{ background: "#90a955", border: 'none', width:"150px", fontWeight: "600", marginLeft: "60px"}}
         >
           Submit
         </Button>
